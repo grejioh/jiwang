@@ -10,7 +10,7 @@ void func1(int hello) {
 int main() {
   signal(SIGUSR2, func1);
 
-  int pid;
+  pid_t pid;
   pid = fork();
   // 创建子进程
   if (pid == 0) {
