@@ -15,9 +15,13 @@ int main() {
   // 创建子进程
   if (pid == 0) {
     printf("In Child Process:\nThis process will send a signal to parent.\n");
-    printf("My pid is %d.\nparent's pid is %d.\nChild process finished.\n",
+    printf("My pid is %d.\nparent's pid is %d.\nChild process finished.\ninput "
+           "1 to send signal...\n",
            getpid(), getppid());
-    kill(getppid(), SIGUSR2);
+    int t;
+    scanf("%d", &t);
+    if (t == 1)
+      kill(getppid(), SIGUSR2);
   } else if (pid >= 1) {
     waitpid(pid, NULL, 0);
     printf("In Parent Process:\n");
